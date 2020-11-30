@@ -8,6 +8,6 @@ The code is organized by sections; each section will be in it's own package.
 A collection of basic sorting algorithms. This is the stuff that developers usually learn in their second programming course or data structure's class.
 
 ### Bubble Sort
-(https://en.wikipedia.org/wiki/Bubble_sort)[Bubble sort]
+[Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)
 
 ## Data Structures
