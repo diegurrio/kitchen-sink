@@ -1,2 +1,3 @@
+include ':sorting'
 include ':app'
 rootProject.name = "Diego's kitchen sink"
