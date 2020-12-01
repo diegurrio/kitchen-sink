@@ -36,7 +36,7 @@ public class SortingUtilitiesTest {
         }
 
         SortingUtilities.bubbleSort(thisArray);
-        
+
         // Check the array is sorted
         for (int index = 0; index < thisArray.length - 1; index ++) {
             Assert.assertTrue(thisArray[index] <= thisArray[index + 1]);

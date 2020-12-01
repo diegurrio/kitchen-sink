@@ -1,5 +1,6 @@
 package com.diego.kitchen.sorting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SortingUtilities {
@@ -50,6 +51,14 @@ public class SortingUtilities {
                 }
             }
         }
+    }
+
+    /**
+     * Sort a java.util.list using merge sort.
+     * @param arraylist The list to be sorted
+     * @param <T> Any object that extends the comparable interface
+     */
+    public static <T extends Comparable<T>> void mergeSort(List<T> arraylist) {
 
     }
 }

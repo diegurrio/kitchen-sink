@@ -8,6 +8,5 @@ The code is organized by sections, and each section will be in it's own package.
 A collection of basic sorting algorithms. This is the stuff that developers usually learn in their second programming course or data structure's class.
 
 ### Bubble Sort
-[Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort) is the simplest sorting algorithm. It works by repeatedly swapping an adjacent element if it is in wrong order. The pass through the list is repeated N times where N is the size of the list.
-
+[Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort) is the simplest sorting algorithm.
 ## Data Structures
