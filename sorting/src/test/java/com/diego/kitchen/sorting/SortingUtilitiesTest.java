@@ -5,22 +5,19 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SortingUtilitiesTest {
+
+    private static int NUMBER_OF_ENTRIES = 1000;
 
     @Test
     public void testBubbleSortList() {
         ArrayList<Integer> thisArrayList = new ArrayList<>();
-        thisArrayList.add(22);
-        thisArrayList.add(33);
-        thisArrayList.add(4);
-        thisArrayList.add(45);
-        thisArrayList.add(33);
-        thisArrayList.add(78);
-        thisArrayList.add(69);
-        thisArrayList.add(24);
-        thisArrayList.add(55);
-        thisArrayList.add(105);
+        final Random random = new Random();
+        for (int index = 0; index < NUMBER_OF_ENTRIES; index ++) {
+            thisArrayList.add(random.nextInt());
+        }
 
         SortingUtilities.bubbleSort(thisArrayList);
 
@@ -32,19 +29,14 @@ public class SortingUtilitiesTest {
 
     @Test
     public void testBubbleSortArray() {
-        Integer[] thisArray = new Integer[10];
-        thisArray[0] = 22;
-        thisArray[1] = 33;
-        thisArray[2] = 4;
-        thisArray[3] = 45;
-        thisArray[4] = 33;
-        thisArray[5] = 78;
-        thisArray[6] = 69;
-        thisArray[7] = 24;
-        thisArray[8] = 55;
-        thisArray[9] = 105;
+        Integer[] thisArray = new Integer[NUMBER_OF_ENTRIES];
+        final Random random = new Random();
+        for (int index = 0; index < NUMBER_OF_ENTRIES; index ++) {
+            thisArray[index] = random.nextInt();
+        }
 
         SortingUtilities.bubbleSort(thisArray);
+        
         // Check the array is sorted
         for (int index = 0; index < thisArray.length - 1; index ++) {
             Assert.assertTrue(thisArray[index] <= thisArray[index + 1]);
