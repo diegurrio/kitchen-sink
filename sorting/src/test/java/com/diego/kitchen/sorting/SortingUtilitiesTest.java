@@ -44,7 +44,7 @@ public class SortingUtilitiesTest {
     }
 
     @Test
-    public void testMergeSort() {
+    public void testMergeSortArrayList() {
         List<Integer> thisArrayList = new ArrayList<>();
         final Random random = new Random();
         for (int index = 0; index < NUMBER_OF_ENTRIES; index ++) {
@@ -60,11 +60,11 @@ public class SortingUtilitiesTest {
     }
 
     @Test
-    public void testTestMergeSort() {
-        Comparable[] thisArray = new Integer[10];
+    public void testTestMergeSortArray() {
+        Comparable[] thisArray = new Integer[NUMBER_OF_ENTRIES];
         final Random random = new Random();
-        for (int index = 0; index < 10; index ++) {
-            thisArray[index] = random.nextInt(10);
+        for (int index = 0; index < NUMBER_OF_ENTRIES; index ++) {
+            thisArray[index] = random.nextInt();
         }
 
         thisArray = SortingUtilities.mergeSort(thisArray);
@@ -72,6 +72,22 @@ public class SortingUtilitiesTest {
         // Check the array is sorted
         for (int index = 0; index < thisArray.length - 1; index ++) {
             Assert.assertTrue(thisArray[index].compareTo(thisArray[index + 1]) <= 0);
+        }
+    }
+
+    @Test
+    public void testQuickSortArrayList() {
+        ArrayList<Integer> thisArrayList = new ArrayList<>();
+        final Random random = new Random();
+        for (int index = 0; index < NUMBER_OF_ENTRIES; index ++) {
+            thisArrayList.add(random.nextInt());
+        }
+
+        SortingUtilities.quickSort(thisArrayList);
+
+        // Check the array is sorted
+        for (int index = 0; index < thisArrayList.size() - 1; index ++) {
+            Assert.assertTrue(thisArrayList.get(index) <= thisArrayList.get(index + 1));
         }
     }
 }
