@@ -7,8 +7,9 @@ The code is organized by sections, and each section will be in it's own package.
 ## Sorting Algorithms
 A collection of basic sorting algorithms. This is the stuff that developers usually learn in their second programming course or data structure's class.
 
-### Bubble Sort
 * [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)
 * [Merge sort](https://en.wikipedia.org/wiki/Merge_sort)
 * [Quicksort](https://en.wikipedia.org/wiki/Quicksort)
+
 ## Data Structures
+TBA
