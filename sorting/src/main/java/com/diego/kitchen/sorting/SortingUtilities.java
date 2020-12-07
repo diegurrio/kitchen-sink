@@ -269,6 +269,32 @@ public class SortingUtilities {
         list.set(indexA, list.get(indexB));
         list.set(indexB, temp);
     }
+
+    /**
+     * Sort an array using quickSort
+     * @param array The array to be sorted
+     * @param <T> Any object that implements the comparable interface
+     */
+    public static <T extends Comparable> void quickSort(T[] array) {
+        quickSort(array, 0, array.length - 1);
+    }
+
+    /**
+     * Private recursive method driver
+     * @param array the array to be sorted
+     * @param lowerIndex the lower index of the partition to be sorted
+     * @param highIndex the higher index of the partition to be sorted
+     * @param <T> Any object that implements comparable
+     */
+    private static <T extends Comparable> void quickSort(T[] array, final int lowerIndex, final int highIndex) {
+        if (lowerIndex >= highIndex) {
+            return;
+        }
+
+        final int partitionIndex = partition(array, lowerIndex, highIndex);
+        quickSort(array, lowerIndex, partitionIndex - 1);
+        quickSort(array, partitionIndex + 1, highIndex);
+    }
     
     /**
      * Swap two elements in an array.
@@ -281,5 +307,155 @@ public class SortingUtilities {
         T temp = array[indexA];
         array[indexA] = array[indexB];
         array[indexB] = temp;
+    }
+
+    private static <T extends Comparable<? super T>> int partition(T[] array, final int lowerIndex, final int higherIndex) {
+
+        // We partitioned the array by moving all elements that are higher than the pivot to the right of the array
+        // and those lower to the left of it.
+        final T pivotValue = array[higherIndex]; // Use the last element on the partition as the pivot
+        int partitionedIndex = lowerIndex;
+
+        for (int index = lowerIndex; index < higherIndex; index++) {
+            if (pivotValue.compareTo(array[index]) > 0) {
+                swapElements(array, partitionedIndex, index);
+                partitionedIndex++;
+            }
+        }
+
+        // Finally put the pivot in its place.
+        swapElements(array, higherIndex, partitionedIndex);
+        return partitionedIndex;
+    }
+
+    /**
+     * Sort a list using the cycle sort algorithm
+     * @param list The list to be sorted
+     * @param <T> Any object that implements the comparable interface.
+     */
+    public static <T extends Comparable> void cycleSort(@NonNull final List<T> list) {
+
+        for (int cycleStart = 0; cycleStart < list.size(); cycleStart ++) {
+
+            T item = list.get(cycleStart);
+
+            int itemPosition = cycleStart;
+            for (int i = cycleStart + 1; i < list.size(); i++) {
+                if (list.get(i).compareTo(item) < 0) {
+                    itemPosition++;
+                }
+            }
+
+            // If the item is not already in it's position
+            if (cycleStart != itemPosition) {
+
+                // Check for duplicates
+                while (item.equals(list.get(itemPosition))) {
+                    itemPosition++;
+                }
+
+                // Put it there.
+                if (itemPosition != cycleStart) {
+                    T temp = item;
+                    item = list.get(itemPosition);
+                    list.set(itemPosition, temp);
+                }
+
+                // Check the rest of the cycle.
+                while (cycleStart != itemPosition) {
+                    itemPosition = cycleStart;
+
+                    // Find position
+                    for (int i = cycleStart + 1; i < list.size(); i++) {
+                        if (list.get(i).compareTo(item) < 0) {
+                            itemPosition++;
+                        }
+                    }
+
+                    // Check for duplicates
+                    while (item.equals(list.get(itemPosition))) {
+                        itemPosition++;
+                    }
+
+                    // swap
+                    if (!item.equals(list.get(itemPosition))) {
+                        T temp = item;
+                        item = list.get(itemPosition);
+                        list.set(itemPosition, temp);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Sort a list using the cycle sort algorithm
+     * @param array the array to be sorted
+     * @param <T> Any object that implements the comparable interface.
+     */
+    public static <T extends Comparable> void cycleSort(@NonNull final T[] array) {
+
+        // Process all of the elements on the array and find their position in the
+        // array is they were sorted.
+        for (int cycleStart = 0; cycleStart < array.length; cycleStart++) {
+            T item = array[cycleStart];
+
+            // Find the sorted position item in the array. We init the position
+            // of the item to that of the cycle because once an item is swapped we know
+            // it will remain there forever, so we skip going over items we know are good.
+            int itemPosition = cycleStart;
+            for (int index = cycleStart + 1; index < array.length; index++) {
+                if (item.compareTo(array[index]) > 0) {
+                    itemPosition++;
+                }
+            }
+
+            // If the item is not already on its rightful position.
+            if (cycleStart != itemPosition) {
+
+                // Check for duplicates and adjust the position.
+                while (item.equals(array[itemPosition])) {
+                    itemPosition++;
+                }
+
+                // Now that we know its final position swap the item. We first check
+                // if the item is not already there because we're going to do a soft swap.
+                // We're going to put item where it needs to go, and we're going to set item
+                // to be the value we just wrote over. We're then going to find the position
+                // of that item.
+                if (!item.equals(array[itemPosition])) {
+                    T temp = array[itemPosition];
+                    array[itemPosition] = item;
+                    item = temp;
+                }
+
+                // Find the position of the new item by checking if there are any cycles left
+                // for the current value of cycleStart.
+                while (itemPosition != cycleStart) {
+
+                    // Find the position of item in the array. We use cycle start instead of 0
+                    // because we can skip items that are already placed.
+                    itemPosition = cycleStart;
+                    for (int index = cycleStart + 1; index < array.length; index++) {
+                        if (item.compareTo(array[index]) > 0) {
+                            itemPosition++;
+                        }
+                    }
+
+                    // Check for duplicates and adjust itemPosition.
+                    while (item.equals(array[itemPosition])) {
+                        itemPosition++;
+                    }
+
+                    // Swap the item
+                    if (!item.equals(array[itemPosition])) {
+                        T temp = array[itemPosition];
+                        array[itemPosition] = item;
+                        item = temp;
+                    }
+                }
+
+            }
+        }
     }
 }
