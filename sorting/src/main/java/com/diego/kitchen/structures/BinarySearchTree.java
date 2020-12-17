@@ -70,15 +70,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
-    public String printInOrder() {
+    public String printPreOrder() {
         final StringBuilder stringBuilder = new StringBuilder("[ ");
-        printInOrderHelper(stringBuilder, rootNode);
+        printPreOrder(stringBuilder, rootNode);
         stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append(" ]");
         return stringBuilder.toString();
     }
 
-    private void printInOrderHelper(final StringBuilder stringBuilder,  Node<T> currentNode) {
+    private void printPreOrder(final StringBuilder stringBuilder, Node<T> currentNode) {
         if (currentNode == null) {
             return;
         }
@@ -86,7 +86,48 @@ public class BinarySearchTree<T extends Comparable<T>> {
         stringBuilder.append(currentNode.data.toString());
         stringBuilder.append(", ");
 
-        printInOrderHelper(stringBuilder, currentNode.left);
-        printInOrderHelper(stringBuilder, currentNode.right);
+        printPreOrder(stringBuilder, currentNode.left);
+        printPreOrder(stringBuilder, currentNode.right);
+    }
+
+    public String printInOrder() {
+        final StringBuilder stringBuilder = new StringBuilder("[ ");
+        printInOrder(stringBuilder, rootNode);
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        stringBuilder.append(" ]");
+        return stringBuilder.toString();
+    }
+
+    private void printInOrder(final StringBuilder stringBuilder, final Node<T> currentNode) {
+        if (currentNode == null) {
+            return;
+        }
+
+        printPreOrder(stringBuilder, currentNode.left);
+
+        stringBuilder.append(currentNode.data.toString());
+        stringBuilder.append(", ");
+
+        printPreOrder(stringBuilder, currentNode.right);
+    }
+
+    public String printPostOrder() {
+        final StringBuilder stringBuilder = new StringBuilder("[ ");
+        printPostOrder(stringBuilder, rootNode);
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        stringBuilder.append(" ]");
+        return stringBuilder.toString();
+    }
+
+    private void printPostOrder(final StringBuilder stringBuilder, final Node<T> currentNode) {
+        if (currentNode == null) {
+            return;
+        }
+
+        printPreOrder(stringBuilder, currentNode.left);
+        printPreOrder(stringBuilder, currentNode.right);
+
+        stringBuilder.append(currentNode.data.toString());
+        stringBuilder.append(", ");
     }
 }
