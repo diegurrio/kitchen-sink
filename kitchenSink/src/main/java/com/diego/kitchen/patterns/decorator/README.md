@@ -8,4 +8,4 @@ We're going to create a Shape interface and concrete classes implementing the Sh
 RedShapeDecorator is concrete class implementing ShapeDecorator.
 DecoratorPatternDemo, our demo class will use RedShapeDecorator to decorate Shape objects.
 
-![UML Diagram](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![UML Diagram](https://github.com/diegurrio/kitchen-sink/blob/main/kitchenSink/src/main/java/com/diego/kitchen/patterns/decorator/decorator_pattern_uml_diagram.jpg?raw=true)
