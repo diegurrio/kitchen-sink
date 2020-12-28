@@ -68,4 +68,18 @@ public class BinarySearchTreeTest extends TestCase {
 
         bst.remove(429);
     }
+
+    @Test
+    public void testPrintBreathFirstOrder() {
+        final BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.add(3);
+        bst.add(6);
+        bst.add(1);
+        bst.add(5);
+        bst.add(66);
+        bst.add(429);
+
+        final String result = bst.printBreathFirstOrder();
+        assertEquals("[ 3, 1, 6, 5, 66, 429 ]", result);
+    }
 }

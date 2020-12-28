@@ -1,6 +1,7 @@
 package com.diego.kitchen.structures;
 
-import java.util.Timer;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class BinarySearchTree<T extends Comparable<T>> {
 
@@ -205,5 +206,32 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         stringBuilder.append(currentNode.data.toString());
         stringBuilder.append(", ");
+    }
+
+    public String printBreathFirstOrder() {
+        final StringBuilder builder = new StringBuilder("[ ");
+        printBreathFirstOrder(builder, rootNode);
+        builder.delete(builder.length() - 2, builder.length());
+        builder.append(" ]");
+
+        return builder.toString();
+    }
+
+    private void printBreathFirstOrder(final StringBuilder builder, final Node<T> rootNode) {
+        final Queue<Node<T>> queue = new ArrayDeque<Node<T>>();
+        queue.add(rootNode);
+
+        while(!queue.isEmpty()) {
+            final Node<T> currentNode = queue.poll();
+            builder.append(currentNode.data + ", ");
+
+            if (currentNode.left != null) {
+                queue.add(currentNode.left);
+            }
+
+            if (currentNode.right != null) {
+                queue.add(currentNode.right);
+            }
+        }
     }
 }
