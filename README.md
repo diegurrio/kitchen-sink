@@ -18,4 +18,4 @@ TBA
 ## F.A.Q.
 
 ### Why Android?
-I debated wether to make a generic Java project, but I'm mainly an Android developer and the more time I spent in Android studio poking around and creating tests the more experience I get on the platform.
+I debated whether to make a generic Java project, but I'm mainly an Android developer and the more time I spent in Android studio poking around and creating tests the more experience I get on the platform.

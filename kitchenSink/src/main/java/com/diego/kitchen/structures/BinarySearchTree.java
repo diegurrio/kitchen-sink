@@ -1,5 +1,7 @@
 package com.diego.kitchen.structures;
 
+import java.util.Timer;
+
 public class BinarySearchTree<T extends Comparable<T>> {
 
     /**
@@ -39,6 +41,80 @@ public class BinarySearchTree<T extends Comparable<T>> {
             addHelper(rootNode, value);
         }
 
+    }
+
+    /**
+     * Remove an item from the tree if it exists.
+     * @param value The value to be removed.
+     */
+    public void remove(final T value) {
+        if (rootNode == null) {
+            return;
+        }
+
+        Node<T> currentNode = rootNode;
+        Node<T> previewsNode = null;
+        while (currentNode != null) {
+            if (currentNode.data.equals(value)) {
+                // We found the value to be deleted.
+                System.out.println("Yes shit!");
+                break;
+            } else if (value.compareTo(currentNode.data) > 0){
+                previewsNode = currentNode;
+                currentNode = currentNode.right;
+            } else {
+                previewsNode = currentNode;
+                currentNode = currentNode.left;
+            }
+        }
+
+        // We did not find it.
+        if (currentNode == null) {
+            return;
+        }
+
+        // One node tree.
+        if (previewsNode == null) {
+            rootNode = null;
+        }
+
+        // First case. The value is a leaf.
+        if (currentNode.left == null && currentNode.right == null) {
+            if (currentNode == previewsNode.left) {
+                previewsNode.left = null;
+            } else {
+                previewsNode.right = null;
+            }
+        }
+
+        // Second case. The value has one child.
+        Node<T> child = null;
+        if (currentNode.left == null && currentNode.right != null) {
+            // The right child.
+            child = currentNode.right;
+        }
+
+        if (currentNode.left != null && currentNode.right == null) {
+            child = currentNode.right;
+        }
+        // The current node does indeed have only one child.
+        if (child != null) {
+            if (previewsNode == null) {
+                // Special case. The root only has one child.
+                rootNode = child;
+            }
+
+            if (previewsNode.left == currentNode) {
+                previewsNode.left = child;
+            } else {
+                previewsNode.right = child;
+            }
+        }
+
+        // Third case. The value has two children.
+        if (currentNode.left != null && currentNode.right != null) {
+            
+        }
     }
 
     /**

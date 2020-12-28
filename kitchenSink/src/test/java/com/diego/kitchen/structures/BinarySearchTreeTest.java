@@ -56,4 +56,16 @@ public class BinarySearchTreeTest extends TestCase {
         final String result = bst.printPostOrder();
         assertEquals("[ 1, 6, 66, 429, 3 ]", result);
     }
+
+    @Test
+    public void testRemove() {
+        final BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.add(3);
+        bst.add(6);
+        bst.add(1);
+        bst.add(66);
+        bst.add(429);
+
+        bst.remove(429);
+    }
 }
