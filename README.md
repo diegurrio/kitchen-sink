@@ -17,6 +17,8 @@ A collection of basic sorting algorithms. This is the stuff that developers usua
 * [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
 
 ## Patterns
+This section of the project provides some implemantations for some of the popular patterns described in the popular book called "Design Patterns: Elements of Reusable Object-Oriented Software" also known as the Gang of for book "To purchase follow this link"
+
 * [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
 * [Factory](https://en.wikipedia.org/wiki/Factory_method_pattern)
 * [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern)
