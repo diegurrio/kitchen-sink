@@ -13,8 +13,8 @@ A collection of basic sorting algorithms. This is the stuff that developers usua
 * [Cycle sort](https://en.wikipedia.org/wiki/Cycle_sort)
 
 ## Data Structures
-* Single linked list
-* Binary search tree
+* [Single linked list](https://en.wikipedia.org/wiki/Linked_list#:~:text=In%20computer%20science%2C%20a%20linked,which%20together%20represent%20a%20sequence.)
+* [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
 
 ## Patterns
 * [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
