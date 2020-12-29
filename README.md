@@ -18,7 +18,7 @@ A collection of basic sorting algorithms. This is the stuff that developers usua
 
 ## Patterns
 * [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern)
-* [Factory(https://en.wikipedia.org/wiki/Factory_method_pattern)
+* [Factory](https://en.wikipedia.org/wiki/Factory_method_pattern)
 * [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern)
 * [Visitor](https://en.wikipedia.org/wiki/Visitor_pattern)
 * [Composite](https://en.wikipedia.org/wiki/Composite_pattern)
