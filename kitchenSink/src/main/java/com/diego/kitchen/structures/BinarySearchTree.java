@@ -1,10 +1,62 @@
 package com.diego.kitchen.structures;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayDeque;
+import java.util.Iterator;
 import java.util.Queue;
+import java.util.Stack;
 
-public class BinarySearchTree<T extends Comparable<T>> {
+public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 
+    @NonNull
+    @Override
+    public Iterator<T> iterator() {
+        return new BinarySearchTreeIterator(this);
+    }
+
+    private class BinarySearchTreeIterator implements Iterator<T> {
+
+        // We use a stack to flatten the tree into a list that we can traverse in order. Another
+        // approach is to use a form of controlled recursion.
+        // TODO: Implement an iterator that uses recursion.
+
+        private Stack<Node<T>> auxiliaryStack;
+
+        public BinarySearchTreeIterator(@NonNull final BinarySearchTree<T> tree) {
+            auxiliaryStack = new Stack<>();
+            Node<T> rootNode = tree.rootNode;
+            while (rootNode != null) {
+                auxiliaryStack.push(rootNode);
+                rootNode = rootNode.left;
+            }
+        }
+        @Override
+        public boolean hasNext() {
+            return !auxiliaryStack.isEmpty();
+        }
+
+        @Override
+        public T next() {
+            Node<T> node = auxiliaryStack.pop();
+            final T result = node.data; // Prepare the data to be returned.
+            // Move to the next node.
+            if (node.right != null) {
+                node = node.right;
+                while (node != null) {
+                    auxiliaryStack.push(node);
+                    node = node.left;
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
     /**
      * Internal node structure
      * @param <T> Any object that extends Comparable. Use to determine the

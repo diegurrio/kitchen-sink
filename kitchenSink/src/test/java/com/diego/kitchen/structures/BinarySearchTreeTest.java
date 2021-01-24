@@ -82,4 +82,18 @@ public class BinarySearchTreeTest extends TestCase {
         final String result = bst.printBreathFirstOrder();
         assertEquals("[ 3, 1, 6, 5, 66, 429 ]", result);
     }
+
+    public void testTreeIterator1() {
+        final BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.add(3);
+        bst.add(6);
+        bst.add(1);
+        bst.add(5);
+        bst.add(66);
+        bst.add(429);
+
+        for (Integer number : bst) {
+            System.out.println("Value: " + number);
+        }
+    }
 }
