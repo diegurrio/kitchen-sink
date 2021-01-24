@@ -1,7 +1,46 @@
 package com.diego.kitchen.structures;
 
 // TODO: Implement the List interface.
-public class SingleLinkedList<T extends Comparable<T>> {
+
+import androidx.annotation.NonNull;
+
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
+public class SingleLinkedList<T extends Comparable<T>> implements Iterable<T>{
+
+    @NonNull
+    @Override
+    public Iterator<T> iterator() {
+        return new SingleLinkedListIterator(this);
+    }
+
+    class SingleLinkedListIterator implements Iterator<T> {
+
+        private Node current;
+
+        public SingleLinkedListIterator(@NonNull final SingleLinkedList<T> list) {
+            current = list.rootNode;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            T data = current.data;
+            current = current.next;
+            return data;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
 
     // Internal list node structure
     private class Node {
